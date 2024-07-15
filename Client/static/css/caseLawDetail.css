@@ -325,7 +325,7 @@ header > div {
   }
   /* 법원 이름 */
   #contentNameBox {
-    width: 600px;
+    width: 100%;
   }
   #Detail {
     font-size: 23px;
