@@ -10,7 +10,7 @@ window.addEventListener("scroll", function () {
 });
 
 // 판례 결과 선택
-const array = ["기각", "각하", "취소", "일부취소"];
+const array = ["기각", "취소", "일부취소"];
 const select = document.getElementById("result");
 
 select.addEventListener("focus", function () {
