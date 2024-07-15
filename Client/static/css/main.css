@@ -477,12 +477,13 @@ body {
   }
   #third {
     width: 70vw;
+    height: 100%;
   }
   #text_AI {
     font-size: 25px;
   }
   .image_container {
-    height: 100vh;
+    height: 100%;
     margin-top: 100px;
     /* display: flex; */
   }
@@ -552,7 +553,7 @@ body {
     margin: auto;
   }
   #text {
-    font-size: 20px;
+    font-size: 15px;
   }
   #category {
     width: 100%;
@@ -570,59 +571,63 @@ body {
     width: 90%;
   }
   #first > h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
   #text_sanjae {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   /* 판례문 설명 구간 */
+  #secondPage {
+    height: 900px;
+  }
   #second {
     width: 95%;
   }
+  .min_title {
+    font-size: 25px;
+  }
   #text_caselaw {
-    font-size: 20px;
+    font-size: 15px;
   }
   #movePage {
-    font-size: 20px;
+    font-size: 15px;
   }
   /* 이미지 슬라이드 */
-  .slider {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-around; */
-  }
   .slide {
-    width: 50%;
+    width: 100%;
     height: 500px;
-    position: relative;
-  }
-  .slider_btn {
-    display: none;
   }
 
   /* AI 설명 구간 */
+  #thirdPage {
+    height: 900px;
+  }
   #third {
     width: 95%;
+    height: 100%;
   }
   #text_AI {
-    font-size: 20px;
+    font-size: 15px;
   }
   .image_container {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-b; */
+    height: 50%;
   }
   .image_AI1 {
-    position: relative;
+    /* position: relative; */
     margin-top: 0;
-    width: 266px;
-    height: 400px;
+    margin-left: 40px;
+    width: 200px;
+    height: 282px;
   }
   .image_AI2 {
-    position: relative;
-    margin-left: 0;
-    width: 266px;
-    height: 400px;
+    /* position: relative; */
+    /* margin-left: 0; */
+    margin-top: 100px;
+    width: 200px;
+    height: 277px;
+    z-index: 1000;
   }
 }

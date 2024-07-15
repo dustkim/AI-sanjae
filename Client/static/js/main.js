@@ -36,7 +36,7 @@ caselawBtn.addEventListener("click", function () {
 
 AI.addEventListener("click", function () {
   var location = document.querySelector("#thirdPage").offsetTop;
-  window.scrollTo({ top: location, behavior: "smooth" });
+  window.scrollTo({ top: location - 50, behavior: "smooth" });
 });
 
 // 화면에 들어오면 보이게 하는 방법

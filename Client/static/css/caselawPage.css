@@ -415,30 +415,30 @@ form {
 
   /* 검색창 */
   .title {
-    font-size: 10px;
+    font-size: 9px;
   }
   .result {
-    width: 15%;
+    width: 20%;
   }
   #result {
-    font-size: 10px;
+    font-size: 8px;
     height: 40px;
   }
   .classification {
-    width: 15%;
+    width: 20%;
   }
   #classification {
     font-size: 10px;
     height: 40px;
   }
   #text {
-    margin-top: 18px;
-    font-size: 15px;
+    margin-top: 14px;
+    font-size: 10px;
     height: 35px;
   }
   .searchBtn {
     height: 40px;
-    margin-top: 18px;
+    margin-top: 14px;
   }
   .searchBtn > img {
     width: 30px;
