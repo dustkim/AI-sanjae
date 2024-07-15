@@ -40,6 +40,7 @@ header > div {
 }
 #title {
   margin-top: 6%;
+  margin-left: 6px;
   font-weight: 100px;
   font-weight: bold;
 }
