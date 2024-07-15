@@ -27,12 +27,7 @@ def search_caselaw(kinda, kindb, content):
 
     # classification 값이 있으면 쿼리에 추가
     if kindb != "전체":
-        selectList = ["기타", "보험급여징수등", "보험료", "업무상사고", "재요양등", "제당금등", "퇴직후진단", "평균임금"]
-
-        if kindb not in selectList:
-            query["kindb"] = kindb
-        else:
-            query["kindb"] = {"$in": selectList}
+        query["kindb"] = kindb
 
     # text 값이 있으면 content 필드를 부분 일치 검색 쿼리에 추가
     if content != '':

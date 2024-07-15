@@ -288,19 +288,24 @@ header > div {
     margin: 0;
     padding: 0;
     width: 100%;
+    border-top: 0.5px solid rgb(106, 106, 107);
   }
   .category > li {
     width: 100%;
   }
   #head_Caselaw {
+    margin: 0;
     padding: 10px 0;
     width: 100%;
     font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
   }
   #head_AI {
     padding: 10px 0;
+    margin: 0;
     width: 100%;
     font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
   }
   .category.active {
     display: flex;
@@ -323,7 +328,7 @@ header > div {
     width: 600px;
   }
   #Detail {
-    font-size: 30px;
+    font-size: 23px;
     margin: 30px auto;
   }
   #contentNameBox > div {
@@ -337,7 +342,7 @@ header > div {
     margin-top: 0px;
   }
   #content {
-    width: 600px;
+    width: 100%;
   }
   #contentBox {
     width: 100%;
@@ -361,5 +366,6 @@ header > div {
   }
   .contentSmallBox3 {
     font-size: 15px;
+    width: 74%;
   }
 }

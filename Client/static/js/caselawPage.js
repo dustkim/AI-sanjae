@@ -10,7 +10,7 @@ window.addEventListener("scroll", function () {
 });
 
 // 판례 결과 선택
-const array = ["기각", "취소", "일부취소"];
+const array = ["기각", "취소", "일부취소", "파기환송"];
 const select = document.getElementById("result");
 
 select.addEventListener("focus", function () {
@@ -26,7 +26,7 @@ select.addEventListener("focus", function () {
 });
 
 // 사건 분류 선택
-const array1 = ["요양", "유족", "휴업", "장해", "기타"];
+const array1 = ["요양", "유족", "장해", "재요양등", "평균임금", "휴업"];
 const select1 = document.getElementById("classification");
 
 select1.addEventListener("focus", function () {
