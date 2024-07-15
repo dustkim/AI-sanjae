@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="icon" type="image/png" href="/static/image/logo1.png" />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
+    <title>sanjae.gg</title>
+  </head>
+  <body>
+    <div id="total">
+      <header id="header">
+        <div>
+          <div id="logo" onclick="location.href='/'">
+            <img src="/static/image/logo1.png" width="30px" , height="30px" />
+            <div id="title" class="text_ExtraBold">Sanjae.gg</div>
+          </div>
+          <ul class="category">
+            <li>
+              <button
+                id="head_Caselaw"
+                class="text_ExtraBold"
+                onclick="location.href='/CaseLaw'"
+              >
+                판례문
+              </button>
+            </li>
+            <li>
+              <button
+                id="head_AI"
+                class="text_ExtraBold"
+                onclick="location.href ='/AI'"
+              >
+                AI
+              </button>
+            </li>
+          </ul>
+          <button id="category_bar">
+            <img src="/static/image/menu.png" alt="menu" />
+          </button>
+        </div>
+      </header>
+      <div id="content">
+        <div id="top">
+          <img src="/static/image/arrowBtn.png" alt="arrow" id="arrow" />
+          <div id="box">
+            <h2 class="text_ExtraBold">산재</h2>
+            <div id="text" class="text_ExtraBold">
+              산재를 신청해야 하는데 잘 모르겠네...<br />알아봐야 하는데
+              복잡하기도 하고...<br />어디 좋은 방법 없나?
+            </div>
+            <ul id="category">
+              <li><button type="button" id="sanjae">산재란</button></li>
+              <li>
+                <button type="button" id="caselaw">판례문 검색 서비스</button>
+              </li>
+              <li><button type="button" id="AI">AI 판별 서비스</button></li>
+            </ul>
+          </div>
+        </div>
+        <div id="firstPage">
+          <div id="first">
+            <h2 class="fade-wrap text_ExtraBold">산재란?</h2>
+            <div id="text_sanjae" class="fade-wrap text_ExtraBold">
+              산업재해의 준말로 작업 과정에서 발생하는 사고로 인해 발생하는
+              인적, 물적 피해를 일컫는 말.
+              <br />
+              <br />
+              <div id="plus_sanjae" class="fade-wrap text_ExtraBold">
+                <span class="emphasis">노동자</span>가 업무에 관계되는
+                건설물·설비·원재료·가스·증기·분진 등에 의하거나 작업 또는 그
+                밖의 업무로 인하여 사망 또는 부상하거나 질병에 걸리는 것을
+                말한다. 광의로는 업무 중뿐만 아니라 통근 중 재해도 포함한다.
+                협의에는 부상(과 부상으로 인해 장애 · 사망)만을 지칭하는 용어로
+                사용되고, 질병(또는 질병으로 인한 장애 · 사망)은 가리키지 않는
+                경우도 많다. 산업재해보상보험법에서는 '업무상의 재해(이하 업무상
+                재해)'라고 한다.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="secondPage">
+          <div id="second">
+            <div class="text_container">
+              <div id="text_caselaw" class="fade-wrap text_ExtraBold">
+                <div class="min_title text_ExtraBold">판례</div>
+                산재 신청을 하고싶은데,<br />
+                내용이 어려워서 판례를 <br />
+                찾아보신 적은 없으신가요?
+              </div>
+              <div class="Btn_box">
+                <button
+                  id="movePage"
+                  class="fade-wrap text_ExtraBold"
+                  onclick="location.href ='/CaseLaw'"
+                >
+                  판례문 조회하기
+                </button>
+              </div>
+            </div>
+            <div class="slider_container">
+              <button class="slider_btn" id="prevBtn">◀</button>
+              <div class="slider">
+                <div class="slide image1"></div>
+                <div class="slide image2"></div>
+                <div class="slide image3"></div>
+                <div class="slide image4"></div>
+              </div>
+              <button class="slider_btn" id="nextBtn">▶</button>
+            </div>
+          </div>
+        </div>
+        <div id="thirdPage">
+          <div id="third">
+            <div class="text_container">
+              <div id="text_AI" class="fade-wrap text_ExtraBold">
+                <div class="min_title text_ExtraBold">AI</div>
+                산재.. <br />
+                혼자서 알아보기 어렵다고요? <br />
+                누구나 쉽고, 간편하게 <br />
+                산재 판별 AI
+              </div>
+              <button
+                id="movePage"
+                class="fade-wrap text_ExtraBold"
+                onClick="location.href ='/AI'"
+              >
+                Start AI
+              </button>
+            </div>
+            <div class="image_container">
+              <div class="image_AI1"></div>
+              <div class="image_AI2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footerTitle">sanjae.gg</div>
+    </footer>
+  </body>
+  <script src="/static/js/main.js"></script>
+</html>

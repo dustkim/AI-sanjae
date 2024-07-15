@@ -1,0 +1,472 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden; /* 가로 스크롤바가 생겨서 없앰 */
+  display: flex;
+  flex-direction: column;
+  font-family: "NanumSquareBold";
+}
+.text_ExtraBold {
+  font-family: "NanumSquareExtraBold";
+}
+main {
+  min-height: 100vh;
+}
+
+/* header */
+#header {
+  margin: 0;
+  padding: 0;
+  position: sticky; /* 헤더 고정하기 */
+  top: 0px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border-bottom: 0px solid rgb(203, 200, 200);
+  z-index: 1;
+}
+header > div {
+  width: 50%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+#logo {
+  padding: 0px 20px;
+  margin: 10px 0;
+  display: flex;
+}
+#logo:hover {
+  cursor: pointer;
+}
+#title {
+  margin-top: 6%;
+  font-weight: 100px;
+  font-weight: bold;
+}
+.category {
+  display: flex;
+  margin: 0;
+}
+.category > li {
+  list-style: none;
+}
+#head_Caselaw {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_Caselaw:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#head_AI {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0px 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_AI:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#category_bar {
+  display: none;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0px;
+}
+#category_bar:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* 페이지 타이틀 */
+.pageTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: rgb(0, 124, 249); */
+  background-image: linear-gradient(
+    to top,
+    rgb(0, 124, 249),
+    rgb(112, 180, 248)
+  );
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+.pageTitle > div {
+  font-size: 80px;
+  color: white;
+}
+.pageTitle > img {
+  width: 250px;
+  height: 250px;
+}
+
+/* 검색창 */
+form {
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+.search_container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  padding: 40px 40px;
+  justify-content: space-between;
+  background-color: rgb(234, 234, 234);
+  border-radius: 10px;
+}
+.title {
+  font-size: 20px;
+  color: gray;
+  text-align: left;
+}
+.result {
+  width: 15%;
+  text-align: left;
+}
+#result {
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+.classification {
+  width: 15%;
+  text-align: left;
+  margin-left: 10px;
+}
+#classification {
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+#text {
+  width: 70%;
+  height: 44px;
+  margin-top: 28px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+.searchBtn {
+  height: 50px;
+  margin-top: 28px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.searchBtn:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+/* 검색 결과 총 건수 */
+.totalRows {
+  width: 75%;
+  height: 100px;
+  padding: 0;
+  margin: 0 auto;
+  border-bottom: 2px solid black;
+}
+#totalResultsCount {
+  font-size: 25px;
+  /* margin-top: 60px; */
+  position: relative;
+  top: 60px;
+}
+/* 검색결과 리스트 */
+#searchResults {
+  width: 100%;
+  padding: 0;
+  margin-top: 0;
+}
+.resultList {
+  width: 60%;
+  list-style: none;
+  padding: 3% 3%;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+.resultList:hover {
+  background-color: rgb(234, 234, 234);
+  cursor: pointer;
+}
+.resultList > button {
+  border: none;
+  font-size: 25px;
+  background-color: transparent;
+}
+.resultList > button:hover {
+  cursor: pointer;
+}
+/* 페이지 버튼 */
+#pagination {
+  height: 25px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+}
+.paginationBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+.paginationBtn:hover {
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+.currentPage {
+  background-color: transparent;
+  color: rgb(48, 115, 240);
+  font-weight: bold;
+}
+.nextBtn {
+  width: 20px;
+  height: 100%;
+  background-image: url("../image/nextBtn.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid white;
+  background-color: transparent;
+  margin-left: 10px;
+}
+.nextBtn:hover {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+.prevBtn {
+  width: 20px;
+  height: 100%;
+  background-image: url("../image/prevBtn.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid white;
+  background-color: transparent;
+  margin-right: 10px;
+}
+.prevBtn:hover {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+/* 로딩 메시지 오버레이 스타일 */
+#loadingOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: center;
+}
+#loadingMessage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: white;
+}
+.footer {
+  height: 50px;
+  width: 100%;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0%;
+  padding: 10px 0;
+}
+.footerTitle {
+  font-size: 20px;
+  color: gray;
+}
+
+/* 미디어 쿼리 1200px */
+@media (max-width: 1200px) {
+  /* 페이지 타이틀 */
+  .pageTitle > img {
+    width: 200px;
+    height: 200px;
+  }
+  .pageTitle > div {
+    font-size: 50px;
+  }
+
+  /* 검색창 */
+  .title {
+    font-size: 15px;
+  }
+  .result {
+    width: 15%;
+  }
+  #result {
+    font-size: 15px;
+  }
+  .classification {
+    width: 15%;
+  }
+  #classification {
+    font-size: 15px;
+  }
+  #text {
+    margin-top: 25px;
+    font-size: 20px;
+  }
+  .searchBtn {
+    height: 50px;
+    margin-top: 25px;
+  }
+  /* 검색 결과 총 건수 */
+  #totalResultsCount {
+    font-size: 20px;
+    top: 65px;
+  }
+  /* 검색결과 리스트 */
+  .resultList > button {
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+  }
+}
+
+/* 미디어 쿼리 790px */
+@media (max-width: 790px) {
+  /* 헤더 */
+  header > div {
+    width: 100%;
+    flex-direction: column;
+  }
+  #title {
+    margin-top: 1%;
+    font-weight: 100px;
+    font-weight: bold;
+  }
+  .category {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-top: 0.5px solid rgb(106, 106, 107);
+  }
+  .category > li {
+    width: 100%;
+  }
+  #head_Caselaw {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
+  }
+  #head_AI {
+    padding: 10px 0;
+    margin: 0;
+    width: 100%;
+    font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
+  }
+  .category.active {
+    display: flex;
+  }
+  #category_bar {
+    display: block;
+  }
+
+  /* 페이지 타이틀 */
+  .pageTitle {
+    height: 100px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .pageTitle > img {
+    display: none;
+  }
+  .pageTitle > div {
+    font-size: 40px;
+  }
+
+  /* 검색창 */
+  .title {
+    font-size: 10px;
+  }
+  .result {
+    width: 15%;
+  }
+  #result {
+    font-size: 10px;
+    height: 40px;
+  }
+  .classification {
+    width: 15%;
+  }
+  #classification {
+    font-size: 10px;
+    height: 40px;
+  }
+  #text {
+    margin-top: 18px;
+    font-size: 15px;
+    height: 35px;
+  }
+  .searchBtn {
+    height: 40px;
+    margin-top: 18px;
+  }
+  .searchBtn > img {
+    width: 30px;
+    height: 30px;
+  }
+  /* 검색 결과 총 건수 */
+  #totalResultsCount {
+    font-size: 15px;
+    top: 70px;
+  }
+  /* 검색결과 리스트 */
+  #searchResults {
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
+  }
+  .resultList {
+    width: 70%;
+    list-style: none;
+    background-color: rgb(234, 234, 234);
+    padding: 3% 3%;
+    margin: 1.5% auto;
+    border-radius: 10px;
+  }
+  .resultList > button {
+    font-size: 12px;
+  }
+  .resultList > p {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/static/image/logo1.png" />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/AIPage.css" />
+    <title>AI 산재 판별</title>
+  </head>
+  <body>
+    <!-- <form action="/AI" method="post"> -->
+    <header id="header">
+      <div>
+        <div id="logo" onclick="location.href='/'">
+          <img src="/static/image/logo1.png" width="30px" , height="30px" />
+          <div id="title" class="text_ExtraBold">Sanjae.gg</div>
+        </div>
+        <ul class="category">
+          <li>
+            <button id="head_Caselaw" onclick="location.href='/CaseLaw'">
+              판례문
+            </button>
+          </li>
+          <li>
+            <button id="head_AI" onclick="location.href='/AI'">AI</button>
+          </li>
+        </ul>
+        <button id="category_bar">
+          <img src="/static/image/menu.png" alt="menu" />
+        </button>
+      </div>
+    </header>
+    <div class="chatBox">
+      <div class="chat">
+        <!-- 메시지와 옵션을 동적으로 추가할 공간 -->
+      </div>
+      <!-- <div class="input">
+        <form class="inputBox" id="inputBox">
+          <textarea type="text" id="text" class="text" name="text"></textarea>
+          <button type="submit" class="textBtn" id="textBtn"></button>
+        </form>
+      </div> -->
+    </div>
+    <div class="input">
+      <form class="inputBox" id="inputBox">
+        <textarea type="text" id="text" class="text" name="text"></textarea>
+        <button type="submit" class="textBtn" id="textBtn"></button>
+      </form>
+    </div>
+    <!-- </form> -->
+    <footer class="footer">
+      <div class="footerTitle">sanjae.gg</div>
+    </footer>
+  </body>
+  <script src="/static/js/AIPage.js"></script>
+</html>

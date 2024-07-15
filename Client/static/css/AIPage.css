@@ -1,0 +1,324 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden; /* 가로 스크롤바가 생겨서 없앰 */
+  overflow-y: hidden;
+  font-family: "NanumSquareBold";
+}
+.text_ExtraBold {
+  font-family: "NanumSquareExtraBold";
+}
+#header {
+  margin: 0;
+  padding: 0;
+  position: sticky; /* 헤더 고정하기 */
+  top: 0px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border-bottom: 0px solid rgb(203, 200, 200);
+  z-index: 100;
+  /* border-bottom: 1px solid gray; */
+}
+header > div {
+  width: 50%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+#logo {
+  padding: 0px 20px;
+  margin: 10px 0;
+  display: flex;
+}
+#logo:hover {
+  cursor: pointer;
+}
+#title {
+  margin-top: 6%;
+  font-weight: 100px;
+  font-weight: bold;
+}
+.category {
+  display: flex;
+  margin: 0;
+}
+.category > li {
+  list-style: none;
+}
+#head_Caselaw {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_Caselaw:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#head_AI {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0px 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_AI:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#category_bar {
+  display: none;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0px;
+}
+#category_bar:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* chatbox */
+.chatBox {
+  width: 100%;
+  height: 81vh;
+  background-color: white;
+  overflow-y: none;
+}
+.chat {
+  width: 50%;
+  height: 75vh;
+  margin: 0 auto;
+  padding: 50px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  /* scrollbar-color: rgba(0, 0, 0, 0.5) rgb(186, 206, 224); */
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgb(76, 122, 250), rgb(245, 245, 216));
+  border-left: 1px solid rgb(130, 127, 127);
+  border-right: 1px solid rgb(130, 127, 127);
+}
+.chatShow {
+  align-self: flex-start;
+  width: 300px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chatShow > div {
+  width: 100%;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.chatShow > button {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  background-color: rgb(201, 199, 199);
+  border-radius: 10px;
+  border: 0;
+}
+.chatShow > button:hover {
+  cursor: pointer;
+  background-color: rgb(241, 226, 198);
+  font-weight: bold;
+  font-size: 13px;
+}
+.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+.chatShowMy {
+  align-self: flex-end;
+  display: inline-block;
+  position: relative;
+  background-color: rgba(255, 235, 51);
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 230px;
+  word-wrap: break-word; /* 자동 줄바꿈 처리 */
+}
+.chatShowMyContent {
+  font-size: 20px;
+}
+.chatShowGpt {
+  align-self: flex-start;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 300px;
+  word-wrap: break-word; /* 자동 줄바꿈 처리 */
+}
+.chatgptContent {
+  font-size: 20px;
+}
+/* chatBox 입력창 */
+.input {
+  width: 100%;
+  height: 10vh;
+  position: relative;
+  bottom: 0px;
+  display: flex;
+  background-color: white;
+  z-index: 1000;
+}
+.inputBox {
+  width: 50%;
+  height: 100%;
+  margin: 0px auto;
+  padding: 0 50px;
+  border-left: 1px solid rgb(130, 127, 127);
+  border-right: 1px solid rgb(130, 127, 127);
+  border-bottom: 1px solid rgb(130, 127, 127);
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.text {
+  width: 95%;
+  height: 80%;
+  font-size: 20px;
+  margin: auto 0;
+  background-color: white;
+  border: 0;
+  word-wrap: break-word;
+  resize: none;
+}
+.textBtn {
+  width: 40px;
+  height: 50%;
+  margin: auto 0;
+  border-radius: 50%;
+  /* border: 1px solid rgba(255, 235, 51); */
+  background-color: rgb(161, 113, 239);
+  background-image: url("../image/enterBtn.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.textBtn:hover {
+  cursor: pointer;
+  background-color: rgb(203, 200, 200);
+  border: 1px solid rgb(203, 200, 200);
+}
+.footer {
+  height: 50px;
+  width: 100%;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.footerTitle {
+  font-size: 20px;
+  color: gray;
+}
+/* 미디어 쿼리 */
+@media (max-width: 790px) {
+  body {
+    min-height: none;
+  }
+  /* 헤더 */
+  header > div {
+    width: 100%;
+    flex-direction: column;
+  }
+  #title {
+    margin-top: 1%;
+    font-weight: 100px;
+    font-weight: bold;
+  }
+  .category {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-top: 0.5px solid rgb(106, 106, 107);
+  }
+  .category > li {
+    width: 100%;
+  }
+  #head_Caselaw {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
+  }
+  #head_AI {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    border-bottom: 0.5px solid rgb(106, 106, 107);
+  }
+  .category.active {
+    display: flex;
+  }
+  #category_bar {
+    display: block;
+  }
+  /* chatbox */
+  .chatBox {
+    width: 100vw;
+    height: 85%;
+  }
+  .chat {
+    width: 100%;
+    height: 98%;
+    padding: 0;
+    padding-top: 20px;
+  }
+  .chatShow {
+    margin-left: 20px;
+  }
+  .chatShowMy {
+    margin-right: 20px;
+  }
+  .chatShowGpt {
+    margin-left: 20px;
+  }
+  /* chatBox 입력창 */
+  .input {
+    width: 100%;
+    height: 10%;
+    position: relative;
+  }
+  .inputBox {
+    width: 100%;
+    padding: 0 10px;
+    border-left: none;
+    border-right: none;
+  }
+}

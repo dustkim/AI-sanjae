@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/static/image/logo1.png" />
+    <link rel="stylesheet" href="/static/css/caseLawDetail.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
+    <title>Details</title>
+  </head>
+  <body>
+    <header id="header">
+      <div>
+        <div id="logo" onclick="location.href='/'">
+          <img src="/static/image/logo1.png" width="30px" , height="30px" />
+          <div id="title" class="text_ExtraBold">Sanjae.gg</div>
+        </div>
+        <ul class="category">
+          <li>
+            <button
+              id="head_Caselaw"
+              class="text_ExtraBold"
+              onclick="location.href='/CaseLaw'"
+            >
+              판례문
+            </button>
+          </li>
+          <li>
+            <button
+              id="head_AI"
+              class="text_ExtraBold"
+              onclick="location.href='/AI'"
+            >
+              AI
+            </button>
+          </li>
+        </ul>
+        <button id="category_bar">
+          <img src="/static/image/menu.png" alt="menu" />
+        </button>
+      </div>
+    </header>
+    <div id="searchtitle">
+      <h3 class="text_ExtraBold">산재판례 검색</h3>
+    </div>
+    <div id="courtName">
+      <dl id="contentNameBox">
+        <dt id="Detail" class="text_ExtraBold">판례 상세 내용</dt>
+        <div>
+          <dt class="text_ExtraBold">판결 법원:</dt>
+          <dt id="courtNameShow"></dt>
+        </div>
+      </dl>
+    </div>
+    <div id="result">
+      <div id="content">
+        <dl id="contentBox">
+          <dt id="contentTitle" class="contentTitle text_ExtraBold">사건명</dt>
+          <dt id="contentDetail1" class="contentSmallBox1"></dt>
+        </dl>
+        <dl id="contentBox">
+          <dt class="contentTitle text_ExtraBold">사건결과</dt>
+          <dt id="contentDetail2" class="contentSmallBox2"></dt>
+          <dt class="contentTitle v">사건유형</dt>
+          <dt id="contentDetail3" class="contentSmallBox2"></dt>
+        </dl>
+        <dl id="contentBox">
+          <dt class="contentTitle text_ExtraBold">사고, 질병 구분</dt>
+          <dt id="contentDetail4" class="contentSmallBox1"></dt>
+        </dl>
+        <dl id="contentDetailBox">
+          <dt class="contentDetailTitle text_ExtraBold">판결 내용</dt>
+          <dt id="contentDetail5" class="contentSmallBox3"></dt>
+        </dl>
+      </div>
+    </div>
+  </body>
+  <script src="/static/js/caselawDetail.js"></script>
+</html>

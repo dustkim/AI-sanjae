@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* 가로 스크롤바가 생겨서 없앰 */
+  font-family: "NanumSquareBold";
+}
+#courtNameShow,
+.text_ExtraBold {
+  font-family: "NanumSquareExtraBold";
+}
+
+/* header */
+#header {
+  margin: 0;
+  padding: 0;
+  position: sticky; /* 헤더 고정하기 */
+  top: 0px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border-bottom: 0px solid rgb(203, 200, 200);
+  z-index: 1;
+}
+header > div {
+  width: 50%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+#logo {
+  padding: 0px 20px;
+  margin: 10px 0;
+  display: flex;
+}
+#logo:hover {
+  cursor: pointer;
+}
+#title {
+  margin-top: 6%;
+  font-weight: 100px;
+  font-weight: bold;
+}
+.category {
+  display: flex;
+  margin: 0;
+}
+.category > li {
+  list-style: none;
+}
+#head_Caselaw {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_Caselaw:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#head_AI {
+  height: 80%;
+  margin: 5px 0;
+  padding: 0px 20px;
+  border: none;
+  background-color: transparent; /* transparent: 투명 */
+  font-size: 14px;
+  color: rgb(106, 106, 107);
+}
+#head_AI:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#category_bar {
+  display: none;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0px;
+}
+#category_bar:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* 검색타이틀 */
+#searchtitle {
+  width: 100%;
+  height: 200px;
+  background-image: linear-gradient(
+    to top,
+    rgb(0, 124, 249),
+    rgb(112, 180, 248)
+  );
+}
+#searchtitle > h3 {
+  width: 70%;
+  font-size: 50px;
+  margin: 0 auto;
+  padding-top: 50px;
+  color: white;
+}
+
+/* 법원 이름 */
+#courtName {
+  width: 100%;
+  height: 100px;
+}
+#contentNameBox {
+  width: 1200px;
+  margin: 0 auto;
+}
+#Detail {
+  font-size: 40px;
+  margin: 100px 0;
+}
+#contentNameBox > div {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  font-size: 20px;
+}
+#courtNameShow {
+  width: 30%;
+  font-size: 23px;
+  margin-left: 10px;
+}
+
+/* 결과 내용 출력창 */
+#result {
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+#content {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  border-top: 4px solid gray;
+}
+#contentBox {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+}
+#contentDetailBox {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  margin: 0 auto;
+  display: flex;
+}
+.contentTitle {
+  width: 20%;
+  height: 100%;
+  background-color: rgb(234, 234, 234);
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(234, 234, 234);
+}
+.contentDetailTitle {
+  width: 20%;
+  height: auto;
+  background-color: rgb(234, 234, 234);
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(234, 234, 234);
+}
+.contentSmallBox1 {
+  width: 81%;
+  height: 100%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(234, 234, 234);
+}
+.contentSmallBox2 {
+  width: 30%;
+  height: 100%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(234, 234, 234);
+}
+.contentSmallBox3 {
+  width: 76%;
+  height: auto;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(234, 234, 234);
+  overflow: auto;
+  padding: 15px;
+}
+
+/* 미디어 쿼리 1200px */
+@media (max-width: 1200px) {
+  /* 검색타이틀 */
+  #searchtitle {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+  }
+  #searchtitle > h3 {
+    padding-top: 40px;
+  }
+  /* 법원 이름 */
+  #contentNameBox {
+    width: 800px;
+  }
+  #Detail {
+    font-size: 30px;
+    margin: 70px auto;
+  }
+  #contentNameBox > div {
+    font-size: 15px;
+  }
+  #courtNameShow {
+    font-size: 20px;
+  }
+  /* 결과 내용 출력창 */
+  #result {
+    margin-top: 40px;
+  }
+  #content {
+    width: 800px;
+  }
+  #contentBox {
+    width: 100%;
+    height: 70px;
+  }
+  #contentDetailBox {
+    width: 100%;
+    min-height: 70px;
+  }
+  .contentTitle {
+    font-size: 15px;
+  }
+  .contentDetailTitle {
+    font-size: 15px;
+  }
+  .contentSmallBox1 {
+    font-size: 20px;
+  }
+  .contentSmallBox2 {
+    font-size: 20px;
+  }
+  .contentSmallBox3 {
+    font-size: 20px;
+  }
+}
+
+/* 미디어 쿼리 790px */
+@media (max-width: 790px) {
+  /* 헤더 */
+  header > div {
+    width: 100%;
+    flex-direction: column;
+  }
+  #title {
+    margin-top: 1%;
+    font-weight: 100px;
+    font-weight: bold;
+  }
+  .category {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .category > li {
+    width: 100%;
+  }
+  #head_Caselaw {
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+  }
+  #head_AI {
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+  }
+  .category.active {
+    display: flex;
+  }
+  #category_bar {
+    display: block;
+  }
+  /* 검색타이틀 */
+  #searchtitle {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+  }
+  #searchtitle > h3 {
+    padding-top: 20px;
+    font-size: 40px;
+  }
+  /* 법원 이름 */
+  #contentNameBox {
+    width: 600px;
+  }
+  #Detail {
+    font-size: 30px;
+    margin: 30px auto;
+  }
+  #contentNameBox > div {
+    font-size: 10px;
+  }
+  #courtNameShow {
+    font-size: 15px;
+  }
+  /* 결과 내용 출력창 */
+  #result {
+    margin-top: 0px;
+  }
+  #content {
+    width: 600px;
+  }
+  #contentBox {
+    width: 100%;
+    height: 50px;
+  }
+  #contentDetailBox {
+    width: 100%;
+    min-height: 50px;
+  }
+  .contentTitle {
+    font-size: 10px;
+  }
+  .contentDetailTitle {
+    font-size: 10px;
+  }
+  .contentSmallBox1 {
+    font-size: 15px;
+  }
+  .contentSmallBox2 {
+    font-size: 15px;
+  }
+  .contentSmallBox3 {
+    font-size: 15px;
+  }
+}

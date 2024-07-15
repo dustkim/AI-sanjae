@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/static/image/logo1.png" />
+    <link rel="stylesheet" href="/static/css/caselawPage.css" />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
+    <title>판례문 조회</title>
+  </head>
+  <body>
+    <header id="header">
+      <div>
+        <div id="logo" onclick="location.href='/'">
+          <img src="/static/image/logo1.png" width="30px" , height="30px" />
+          <div id="title" class="text_ExtraBold">Sanjae.gg</div>
+        </div>
+        <ul class="category">
+          <li>
+            <button
+              id="head_Caselaw"
+              class="text_ExtraBold"
+              onclick="location.href='/CaseLaw'"
+            >
+              판례문
+            </button>
+          </li>
+          <li>
+            <button
+              id="head_AI"
+              class="text_ExtraBold"
+              onclick="location.href='/AI'"
+            >
+              AI
+            </button>
+          </li>
+        </ul>
+        <button id="category_bar">
+          <img src="/static/image/menu.png" alt="menu" />
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="pageTitle">
+        <img src="../static/image/sanjaeImage2.png" alt="" />
+        <div>산재 판례 검색</div>
+        <img src="../static/image/sanjaeImage1.png" alt="" />
+      </div>
+      <form action="/CaseLaw" method="post" id="searchForm">
+        <div class="search_container">
+          <div class="result">
+            <div class="title">판례 결과</div>
+            <select name="result" id="result">
+              <option value="전체">전체</option>
+            </select>
+          </div>
+          <div class="classification">
+            <div class="title">사건 분류</div>
+            <select name="classification" id="classification">
+              <option value="전체">전체</option>
+            </select>
+          </div>
+          <input
+            type="text"
+            id="text"
+            name="text"
+            placeholder="검색어를 입력해주세요"
+          />
+          <button type="submit" class="searchBtn">
+            <img src="/static/image/search.png" alt="search" />
+          </button>
+        </div>
+      </form>
+      <div class="totalRows">
+        <div id="totalResultsCount"></div>
+      </div>
+      <div id="loadingOverlay">
+        <div id="loadingMessage">불러오는중...</div>
+      </div>
+      <ul id="searchResults">
+        <!-- 여기에 검색 결과가 동적으로 추가될 예정 -->
+      </ul>
+      <div id="pagination">
+        <!-- 여기에 페이지 번호가 동적으로 추가될 예정 -->
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footerTitle">sanjae.gg</div>
+    </footer>
+  </body>
+  <script src="/static/js/caselawPage.js"></script>
+</html>
