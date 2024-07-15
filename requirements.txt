@@ -1,2 +1,6 @@
 uvicorn
 fastapi
+pymongo
+os
+BaseModel
+openai
