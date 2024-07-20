@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 
-model = None
+model_save_path = 'model'
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
@@ -36,12 +36,7 @@ def preprocess(text):
 
 def modelstart(user_input, kindb):
     # 사전학습된 SentenceTransformer 모델 로드
-    global model
-    
-    if not model:
-        model = SentenceTransformer(os.environ['MODEL_PATH'])
-    else:
-        pass
+    model = SentenceTransformer(model_save_path)
 
     # 종류 6개중 하나를 골랐을 경우(그 해당 데이터 df에 저장)
     data = list(collection.find({"kindb": kindb}))
