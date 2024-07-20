@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from konlpy.tag import Okt
 from sentence_transformers import SentenceTransformer, util
 from pymongo import MongoClient
