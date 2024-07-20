@@ -8,11 +8,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from data import search_caselaw, findcaselaw, findanswer
+from data import search_caselaw, findcaselaw, findanswer, findNomusa
 from dotenv import load_dotenv
+from typing import List
 
 app = FastAPI()
-
 
 class SearchRequest(BaseModel):
     result: str
@@ -22,6 +22,7 @@ class CaseLawRequest(BaseModel):
     accnum: str
 class AIRequest(BaseModel):
     text: str
+    select: str
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 templates = Jinja2Templates(directory=os.path.join(base_dir, "Client/templates"))
@@ -65,8 +66,14 @@ async def detail_sanjae(request: CaseLawRequest):
 @app.post('/AI')
 async def answerReturn(request: AIRequest):
     text = request.text
-    result = findanswer(text)
+    select = request.select
+    result = findanswer(text, select)
     return result
+@app.post('/AI/nomusa')
+async def FindNomusa():
+    data = findNomusa()
+    print(data)
+    return data
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=os.environ["PORT"], reload=True)

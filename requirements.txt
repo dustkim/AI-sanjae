@@ -2,3 +2,8 @@ uvicorn
 fastapi
 pymongo
 openai
+sentence_transformers
+os
+numpy
+pandas
+konlpy

@@ -170,7 +170,23 @@ header > div {
 .chatShowMyContent {
   font-size: 20px;
 }
-.chatShowGpt {
+/* 모델에서 쳇 나오기 전에 로딩창 */
+.chatShowWait {
+  align-self: flex-start;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 300px;
+}
+.chatShowContent {
+  font-size: 20px;
+}
+/* 딥러닝 모델에서 나오는 답변 */
+.chatShowModel {
   align-self: flex-start;
   display: inline-block;
   position: relative;
@@ -181,10 +197,63 @@ header > div {
   margin-left: 10px;
   max-width: 300px;
   word-wrap: break-word; /* 자동 줄바꿈 처리 */
+  white-space: pre-line;
 }
-.chatgptContent {
+.chatModelContent {
   font-size: 20px;
 }
+/* 금액 계산/노무사 추천 버튼 */
+.ShowSelect {
+  align-self: flex-start;
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 300px;
+  border: 1px dashed black;
+}
+.SelectchatContent {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.selectPrice {
+  font-size: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+.selectPrice:hover {
+  cursor: pointer;
+  font-size: 16px;
+  background-color: white;
+}
+.selectNomusa {
+  font-size: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+.selectNomusa:hover {
+  cursor: pointer;
+  font-size: 16px;
+  background-color: white;
+}
+/* 노무사 정보 띄우기 */
+.Nomusadata {
+  align-self: flex-start;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 300px;
+}
+
 /* chatBox 입력창 */
 .input {
   width: 100%;
@@ -312,7 +381,7 @@ header > div {
   .chatShowMy {
     margin-right: 20px;
   }
-  .chatShowGpt {
+  .chatShowModel {
     margin-left: 20px;
   }
   /* chatBox 입력창 */

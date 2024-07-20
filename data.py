@@ -2,10 +2,11 @@ from pymongo import MongoClient
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+from model import preprocess, modelstart
+import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
-
 
 # OpenAI API 키 설정
 api_key = os.environ["API_KEY"]
@@ -15,6 +16,7 @@ mogodbURL = f"mongodb+srv://{os.environ['MONGODB_KEY']}@cluster0.siectcp.mongodb
 client = MongoClient(mogodbURL)
 database = client["project2"]
 collection = database["CaseLaw"]
+collections = database["Nomusa"]
 
 # 데이터에서 검색 조건에 맞는 결과 찾기
 def search_caselaw(kinda, kindb, content):
@@ -58,18 +60,43 @@ def findcaselaw(accnum):
         data["_id"] = str(data["_id"])
     return data
 
-# gpt에서 결과 받기
-def findanswer(text):
-    client = OpenAI(api_key=api_key)
+# model에서 결과 받기
+def findanswer(text, select):
+    if ("JAVA_HOME" in os.environ) == False:
+        os.environ["JAVA_HOME"] = r"C:\Program Files\Java\jdk-22\bin\server"
+        print("JAVA_HOME" in os.environ)
+    Cleantext = preprocess(text)
+    result = modelstart(Cleantext, select)
+    print(result[0])
+    if result[0]["similarity"] > 0.5:
+        if result[0]["kinda"] == "기각":
+            return f"'산재 불가능' 확률이 높습니다."
+        else:
+            return f"'산재 가능' 확률이 높습니다."
+    else:
+        return f"진단시 받았던 병명/상황을 좀 더 상세하게 작성해 주세요."
 
-    response = client.chat.completions.create(
-        model = "gpt-3.5-turbo-0125",
-        messages = [{"role": "user", "content": f"{text}/n/n 위 내용으로 산재를 받을 확률이 얼마나되는지 파악하고 가능한지 불가능한지 좀 더 가능성이 있는 쪽으로 말해줘\n 산재와 관련이 없는 내용이거나 정보가 부족하면 '추가적인 정보가 필요합니다.'라고 답변해줘"}],
-        temperature=0.7,
-        top_p=0.7,
-        frequency_penalty=0.2
-    )
+    # client = OpenAI(api_key=api_key)
 
-    # 결과 확인
-    print("내용\n", response.choices[0].message.content)
-    return response.choices[0].message.content
+    # response = client.chat.completions.create(
+    #     model = "gpt-3.5-turbo-0125",
+    #     messages = [{"role": "user", "content": f"'{text}' 이러한 상황인데/n/n 판례문 중에 {result[0]['content']}인 판례내용이 있어 그럼 현재 상황에 대해 산재를 받을 수 있을까?"}],
+    #     temperature=0.7,
+    #     top_p=0.7,
+    #     frequency_penalty=0.2
+    # )
+    # return response
+
+# _id 제거
+def idremove(doc):
+    doc.pop('_id', None)
+    return doc
+
+# MongoDB에서 노무사 정보 찾기
+def findNomusa():
+    Nomusa = collections.find({})
+    randomdata = list(Nomusa)
+    idremovedata =  random.sample(randomdata, k=5)
+    randomdatapost = [idremove(doc) for doc in idremovedata]
+
+    return randomdatapost

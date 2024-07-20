@@ -242,6 +242,8 @@ body {
   opacity: 0; /* 투명 */
   position: relative;
   bottom: -50px;
+  font-weight: 300;
+  line-height: 2;
 }
 .fade-wrap.fade-in {
   opacity: 1; /* 불투명 */
@@ -255,7 +257,7 @@ body {
 
 /* 판례문 설명 구간 */
 #secondPage {
-  height: 1600px;
+  height: 1800px;
   width: 100vw;
   background-color: rgb(251, 249, 252);
 }
@@ -364,7 +366,7 @@ body {
 
 /* AI 설명 구간 */
 #thirdPage {
-  height: 1600px;
+  height: 2000px;
   width: 100vw;
 }
 #third {
@@ -377,7 +379,7 @@ body {
   text-align: left;
 }
 .image_container {
-  height: 100vh;
+  height: 100%;
   margin-top: 100px;
   /* display: flex; */
 }
@@ -416,6 +418,7 @@ body {
   font-size: 20px;
   color: gray;
 }
+
 /* 미디어 쿼리 1200px */
 @media (max-width: 1200px) {
   /* 맨 처음 구간 */
@@ -629,6 +632,6 @@ body {
     margin-top: 100px;
     width: 200px;
     height: 277px;
-    z-index: 1000;
+    z-index: 10;
   }
 }
