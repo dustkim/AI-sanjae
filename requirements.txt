@@ -3,6 +3,5 @@ fastapi
 pymongo
 openai
 sentence_transformers
-os
 pandas
 konlpy
