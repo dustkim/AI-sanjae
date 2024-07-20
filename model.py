@@ -51,8 +51,6 @@ def modelstart(user_input, kindb):
     print(df.head())
 
     # 사용자 키워드 입력 및 전처리
-    # user_input = "업무상 재해로 요양승인을 받았는데, 평균임금의 책정을 잘못한 거 같다."  # 사용자 입력부분
-    # preprocessed_input = preprocess(user_input)
     user_embedding = model.encode(user_input)
 
     # 유사도 계산

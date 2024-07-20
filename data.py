@@ -66,7 +66,6 @@ def findanswer(text, select):
         os.environ["JAVA_HOME"] = r"C:\Program Files\Java\jdk-22\bin\server"
         print("JAVA_HOME" in os.environ)
 
-    print("JAVA_HOME:", os.environ.get("JAVA_HOME"))
     Cleantext = preprocess(text)
     result = modelstart(Cleantext, select)
     print(result[0])
