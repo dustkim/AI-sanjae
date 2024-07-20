@@ -1,7 +1,7 @@
 uvicorn
 fastapi
 pymongo
-openai
+# openai
 sentence_transformers
 pandas
 konlpy
