@@ -39,7 +39,7 @@ def modelstart(user_input, kindb):
     global model
     
     if not model:
-        model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
+        model = SentenceTransformer(os.environ['MODEL_PATH'])
     else:
         pass
 
