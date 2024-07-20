@@ -7,6 +7,7 @@ import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
+java_home = os.getenv("JAVA_HOME")
 
 # OpenAI API 키 설정
 api_key = os.environ["API_KEY"]
@@ -62,9 +63,14 @@ def findcaselaw(accnum):
 
 # model에서 결과 받기
 def findanswer(text, select):
-    if ("JAVA_HOME" in os.environ) == False:
-        os.environ["JAVA_HOME"] = r"C:\Program Files\Java\jdk-22\bin\server"
-        print("JAVA_HOME" in os.environ)
+    # if ("JAVA_HOME" in os.environ) == False:
+    #     os.environ["JAVA_HOME"] = r"C:\Program Files\Java\jdk-22\bin\server"
+    #     print("JAVA_HOME" in os.environ)
+
+    if java_home is None:
+        os.environ["JAVA_HOME"] = r"/usr/local/openjdk-22"
+
+    print("JAVA_HOME:", os.environ.get("JAVA_HOME"))
     Cleantext = preprocess(text)
     result = modelstart(Cleantext, select)
     print(result[0])
