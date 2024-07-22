@@ -229,6 +229,7 @@ function makeShowSelect() {
 
       // 데이터 나타내기
       NomusaShow(data);
+      NomusaClick();
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -266,14 +267,17 @@ function NomusaShow(data) {
     이메일: ${data[i].email}<br>
     주소: ${data[i].address}
   `;
-    // inputdata.textContent = `
-    // 이미지: ${data[i].image}
-    // 이름: ${data[i].name}
-    // 전화번호: ${data[i].phoneNumber}
-    // 주소: ${data[i].address}
-    // 이메일: ${data[i].email}`;
 
     Showdata.appendChild(inputdata);
     chat.appendChild(Showdata);
+  }
+}
+
+// 이벤트 핸들러: 선택지 클릭 시 처리
+function NomusaClick() {
+  const button = document.querySelector(".selectNomusa");
+  if (button) {
+    button.disabled = true;
+    button.classList.add("disabled");
   }
 }

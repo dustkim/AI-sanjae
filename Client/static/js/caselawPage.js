@@ -73,7 +73,7 @@ searchForm.addEventListener("submit", async (event) => {
   const text = formData.get("text");
 
   // 서버로 요청
-  const response = await fetch("search", {
+  const response = await fetch("/search", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

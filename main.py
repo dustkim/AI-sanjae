@@ -3,7 +3,7 @@
 
 import os
 import uvicorn
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -11,8 +11,23 @@ from pydantic import BaseModel
 from data import search_caselaw, findcaselaw, findanswer, findNomusa
 from dotenv import load_dotenv
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://54.180.228.231",
+    "http://localhost:8000"
+]
+
+# 허용하는 api 설정 배포 시 중요함 > 설정이 안되어있으면 서버에서 요청한 url을 찾지 못한다.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class SearchRequest(BaseModel):
     result: str

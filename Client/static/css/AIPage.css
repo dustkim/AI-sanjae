@@ -241,6 +241,11 @@ header > div {
   font-size: 16px;
   background-color: white;
 }
+.selectNomusa:disabled {
+  font-size: 15px;
+  background-color: gray;
+  cursor: default;
+}
 /* 노무사 정보 띄우기 */
 .Nomusadata {
   align-self: flex-start;
