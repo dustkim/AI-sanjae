@@ -39,7 +39,6 @@ def search_caselaw(kinda, kindb, content):
     try:
         # MongoDB에서 검색
         cursor = collection.find(query)
-        client.close()
         
         # 검색 결과 처리
         results = []

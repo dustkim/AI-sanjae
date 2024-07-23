@@ -39,7 +39,6 @@ def modelstart(user_input, kindb):
 
     # 종류 6개중 하나를 골랐을 경우(그 해당 데이터 df에 저장)
     data = list(collection.find({"kindb": kindb}))
-    client.close()
     print(data[0])
     df = pd.DataFrame(data, columns=["kinda", "content", "embedding"])
     print(df.head())
