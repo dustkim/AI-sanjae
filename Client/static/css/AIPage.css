@@ -149,7 +149,6 @@ header > div {
   cursor: pointer;
   background-color: rgb(241, 226, 198);
   font-weight: bold;
-  font-size: 13px;
 }
 .disabled {
   background-color: grey;
@@ -230,6 +229,11 @@ header > div {
   font-size: 16px;
   background-color: white;
 }
+.selectPrice:disabled {
+  font-size: 15px;
+  background-color: gray;
+  cursor: default;
+}
 .selectNomusa {
   font-size: 15px;
   padding: 10px;
@@ -257,6 +261,20 @@ header > div {
   margin-bottom: 20px;
   margin-left: 10px;
   max-width: 300px;
+}
+/* 금액 계산/노무사 추천 클릭시 나오는 질문 칸 */
+.chatShowAmount {
+  align-self: flex-start;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  max-width: 300px;
+  word-wrap: break-word; /* 자동 줄바꿈 처리 */
+  white-space: pre-line;
 }
 
 /* chatBox 입력창 */

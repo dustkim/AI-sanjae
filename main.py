@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from data import search_caselaw, findcaselaw, findanswer, findNomusa
+from data import search_caselaw, findcaselaw, findanswer, findNomusa, calculatorprice
 from dotenv import load_dotenv
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,6 +36,9 @@ class SearchRequest(BaseModel):
 class CaseLawRequest(BaseModel):
     accnum: str
 class AIRequest(BaseModel):
+    text: str
+    select: str
+class AICalCulRequest(BaseModel):
     text: str
     select: str
 
@@ -89,6 +92,13 @@ async def FindNomusa():
     data = findNomusa()
     print(data)
     return data
+@app.post('/AI/Amount')
+async def calculator(request: AICalCulRequest):
+    text = request.text
+    select = request.select
+    print(text, select)
+    result = calculatorprice(text, select)
+    return result
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=os.environ["PORT"], reload=True)

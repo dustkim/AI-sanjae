@@ -1,6 +1,7 @@
 // 반응형 메뉴바
 const menuBtn = document.querySelector("#category_bar");
 const category = document.querySelector(".category");
+let flag = false;
 
 menuBtn.addEventListener("click", () => {
   category.classList.toggle("active");
@@ -103,7 +104,7 @@ form.addEventListener("submit", async function (event) {
 
   makeChatShowWait();
 
-  if (text.trim()) {
+  if (text.trim() && flag == false) {
     try {
       const requestBody = { text: text, select: selectResult[0] };
       const response = await fetch("/AI", {
@@ -131,6 +132,38 @@ form.addEventListener("submit", async function (event) {
       if (datasplit[1] == "산재 가능") {
         makeShowSelect();
       }
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
+  }
+
+  if (text && flag == true) {
+    try {
+      console.log(text);
+      const request = { text: text, select: selectResult[0] };
+      console.log(request);
+      const response = await fetch("/AI/Amount", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const answer = await response.json();
+
+      // ChatShowWait 제거
+      removeChatShowWait();
+
+      // ChatShowModel 생성
+      makeChatShowModel(answer);
+      flag = false;
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -208,6 +241,7 @@ function makeShowSelect() {
   Selectchat.appendChild(selectNomusa);
 
   chat.appendChild(Selectchat);
+  chat.scrollTop = chat.scrollHeight;
 
   // 노무사 추천 버튼 눌렀을 때
   const NomusaBtn = document.querySelector(".selectNomusa");
@@ -230,6 +264,39 @@ function makeShowSelect() {
       // 데이터 나타내기
       NomusaShow(data);
       NomusaClick();
+
+      chat.scrollTop = chat.scrollHeight;
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
+  });
+
+  // 금액 계산 버튼을 눌렀을 때
+  const calAmount = document.querySelector(".selectPrice");
+  calAmount.addEventListener("click", async function () {
+    try {
+      // 입력 받기
+      if (selectResult[0] == "요양") {
+        answer =
+          "실제 치료에 소요된 비용을 보상하는 것이기 때문에 직접적인 계산이 필요하지 않습니다.";
+        makeShowAmount(answer);
+      } else if (selectResult[0] == "휴업") {
+        answer = "평균임금을 입력해주세요. (숫자만 입력, 예: 2000000)";
+        makeShowAmount(answer);
+      } else if (selectResult[0] == "장해") {
+        answer =
+          "평균임금 및 장해등급을 입력해주세요. (숫자만 입력, 예: 2000000, 3)";
+        makeShowAmount(answer);
+      } else if (selectResult[0] == "유족") {
+        answer =
+          "평균임금 및 유족보상연금수급권자 수를 입력해주세요. (숫자만 입력, 예: 2000000, 2)";
+        makeShowAmount(answer);
+      }
+      amountClick();
+      flag = true;
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -253,7 +320,6 @@ const priceBtn = document.querySelector(".selectPrice");
 
 // NomusaShow 데이터 나타내기
 function NomusaShow(data) {
-  console.log("1");
   for (let i = 0; i < data.length; i++) {
     Showdata = document.createElement("div");
     Showdata.classList.add(`Nomusadata`);
@@ -273,11 +339,34 @@ function NomusaShow(data) {
   }
 }
 
-// 이벤트 핸들러: 선택지 클릭 시 처리
+// 이벤트 핸들러: 노무사 추천 버튼 클릭 시 처리
 function NomusaClick() {
   const button = document.querySelector(".selectNomusa");
   if (button) {
     button.disabled = true;
     button.classList.add("disabled");
   }
+}
+
+function makeShowAmount(content) {
+  const Amount = document.createElement("div");
+  Amount.classList.add("chatShowAmount");
+  AmountContent = document.createElement("div");
+  AmountContent.classList.add("AmountContent");
+  AmountContent.textContent = content;
+  Amount.appendChild(AmountContent);
+
+  chat.appendChild(Amount);
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// 이벤트 핸들러: 금액 계산 버튼 클릭 시 처리
+function amountClick() {
+  const button = document.querySelector(".selectPrice");
+  if (button) {
+    button.disabled = true;
+    button.classList.add("disabled");
+  }
+  chat.scrollTop = chat.scrollHeight;
 }
