@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 질문 추가하기
     if (option) {
-      const question = "현재 상황에 대해서 아래에 입력해 주세요.";
+      const question = `현재 상황에 대해서 아래에 입력해 주세요.\n(재해 상황, 병명 등 상세하게 기재해 주세요.)`;
       const option = NaN;
       setTimeout(() => {
         appendChatShow(option, question);

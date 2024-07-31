@@ -107,7 +107,7 @@ def findNomusa():
 # 금액 계산하기
 def calculatorprice(text, select):
     if select == "휴업":
-        price = int(text)
+        price = int(text) / 30
         pay = price * 0.7
 
         if pay < 76960:
@@ -124,7 +124,7 @@ def calculatorprice(text, select):
         annual_list = {616:138, 737:164, 869:193, 1012:224, 1155:257, 1309:291, 1474:329}
         # 장해 등급에 따른 장해보상일시금 (일분)
         reward = {'1':1474, '2':1309, '3':1155, '4':1012, '5':869, '6':737, '7':616, '8':495, '9':385, '10':297, '11':220, '12':154, '13':99, '14':55}
-        price = int(text.split(",")[0])
+        price = int(text.split(",")[0]) / 30
         lank = text.split(",")[1].strip()
         money = price * reward[lank] * 0.95
         money = math.ceil(money / 10) * 10
@@ -140,7 +140,7 @@ def calculatorprice(text, select):
             return f'장해보상일시금 : {money:,}원'
 
     elif select == "유족":
-        price = int(text.split(",")[0])
+        price = int(text.split(",")[0]) / 30
         num_survior = int(text.split(",")[1].strip())
 
         if num_survior == 0:
