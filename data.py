@@ -18,6 +18,7 @@ client = MongoClient(mogodbURL)
 database = client["project2"]
 collection = database["CaseLaw"]
 collections = database["Nomusa"]
+collectionl = database["rawdata"]
 
 # 데이터에서 검색 조건에 맞는 결과 찾기
 def search_caselaw(kinda, kindb, content):
@@ -34,7 +35,6 @@ def search_caselaw(kinda, kindb, content):
 
     # text 값이 있으면 content 필드를 부분 일치 검색 쿼리에 추가
     if content != '':
-        print('2')
         query["content"] = {"$regex": content, "$options": "i"}
 
     try:
@@ -66,30 +66,29 @@ def findanswer(text, select):
     if ("JAVA_HOME" in os.environ) == False:
         os.environ["JAVA_HOME"] = r"C:\Program Files\Java\jdk-22\bin\server"
         print("JAVA_HOME" in os.environ)
-
     Cleantext = preprocess(text)
     result = modelstart(Cleantext, select)
+    print(len(result))
     print(result[0])
+    print()
+    print(result[1])
+    print()
+    print(result[2])
+    print()
+    print(result[3])
+    print()
+    print(result[4])
+
+    link = collectionl.find_one({"index": int(result[0]["kinda"][0])})
     if result[0]["similarity"] > 0.5:
-        if result[0]["kinda"] == "기각":
-            return f"'산재 불가능' 확률이 높습니다."
+        if result[0]["kinda"][1] == "기각":
+            return [f"'산재 불가능' 확률이 높습니다.", link["accnum"]]
         else:
-            return f"'산재 가능' 확률이 높습니다."
+            return [f"'산재 가능' 확률이 높습니다.", link['accnum']]
     elif (result[0]["similarity"] > 0.3):
         return f"진단시 받았던 병명/상황을 좀 더 상세하게 작성해 주세요."
     elif (result[0]["similarity"] <= 0.3):
         return f"판단할 수 없습니다."
-
-    # client = OpenAI(api_key=api_key)
-
-    # response = client.chat.completions.create(
-    #     model = "gpt-3.5-turbo-0125",
-    #     messages = [{"role": "user", "content": f"'{text}' 이러한 상황인데/n/n 판례문 중에 {result[0]['content']}인 판례내용이 있어 그럼 현재 상황에 대해 산재를 받을 수 있을까?"}],
-    #     temperature=0.7,
-    #     top_p=0.7,
-    #     frequency_penalty=0.2
-    # )
-    # return response
 
 # _id 제거
 def idremove(doc):
@@ -118,7 +117,7 @@ def calculatorprice(text, select):
 
         # math: 마지막 자리 올림처리
         result = math.ceil(pay / 10) * 10
-        return f"휴업급여(일): {result}원"
+        return f"휴업급여(일): {result:,}원"
     
     elif select == "장해":
         # 장해 등급에 따른 장해보상 연금 (일분)
@@ -146,10 +145,10 @@ def calculatorprice(text, select):
 
         if num_survior == 0:
             money = price * 1300
-            return f"유복보상일시금: {money}원"
+            return f"유복보상일시금: {money:,}원"
         else:
             basic_annual_pay = price * 365
             money = (basic_annual_pay * 0.47 + (basic_annual_pay * 0.05 * num_survior)) / 12
             money = math.ceil(money / 10) * 10
-            return f"유족보상연금(1년에 달마다 받는 금액) : {money}원"
+            return f"유족보상연금(1년에 달마다 받는 금액) : {money:,}원"
     

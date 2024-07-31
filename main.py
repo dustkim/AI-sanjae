@@ -90,13 +90,11 @@ async def answerReturn(request: AIRequest):
 @app.post('/AI/nomusa')
 async def FindNomusa():
     data = findNomusa()
-    print(data)
     return data
 @app.post('/AI/Amount')
 async def calculator(request: AICalCulRequest):
     text = request.text
     select = request.select
-    print(text, select)
     result = calculatorprice(text, select)
     return result
 

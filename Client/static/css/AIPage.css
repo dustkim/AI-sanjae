@@ -211,7 +211,7 @@ header > div {
   padding: 7px 12px;
   margin-bottom: 20px;
   margin-left: 10px;
-  max-width: 300px;
+  max-width: 400px;
   border: 1px dashed black;
 }
 .SelectchatContent {
@@ -250,6 +250,23 @@ header > div {
   background-color: gray;
   cursor: default;
 }
+.selectCaselaw {
+  font-size: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+.selectCaselaw:hover {
+  cursor: pointer;
+  font-size: 16px;
+  background-color: white;
+}
+.selectCaselaw:disabled {
+  font-size: 15px;
+  background-color: gray;
+  cursor: default;
+}
+
 /* 노무사 정보 띄우기 */
 .Nomusadata {
   align-self: flex-start;

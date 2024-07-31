@@ -37,11 +37,10 @@ def modelstart(user_input, kindb):
     # 사전학습된 SentenceTransformer 모델 로드
     model = SentenceTransformer(os.environ['MODEL_NAME'])
 
+    print(kindb)
     # 종류 6개중 하나를 골랐을 경우(그 해당 데이터 df에 저장)
     data = list(collection.find({"kindb": kindb}))
-    print(data[0])
-    df = pd.DataFrame(data, columns=["kinda", "content", "embedding"])
-    print(df.head())
+    df = pd.DataFrame(data, columns=["kinda", "content", "embedding", "index"])
 
     # 사용자 키워드 입력 및 전처리
     user_embedding = model.encode(user_input)
@@ -59,7 +58,7 @@ def modelstart(user_input, kindb):
     top_5_similarities = []
     for index, similarity in sorted_similarities[:5]:
         content = df['content'].loc[index]  # 데이터의 요약문장
-        kinda = index, df['kinda'].loc[index] # 그 데이터의 index와 kinda 값
+        kinda = df["index"].loc[index], df['kinda'].loc[index] # 그 데이터의 index와 kinda 값
         top_5_similarities.append({
             "content": content,
             "kinda": kinda,

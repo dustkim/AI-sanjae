@@ -119,24 +119,27 @@ form.addEventListener("submit", async function (event) {
       }
 
       const data = await response.json();
-      const datasplit = data.split("'", 2);
-      // console.log(datasplit[1]);
+      const datasplit = data[0].split("'", 2);
 
       // ChatShowWait 제거
       removeChatShowWait();
 
       // ChatShowModel 생성
-      makeChatShowModel(data);
+      if (data.length == 2) {
+        makeChatShowModel(data[0]);
+      } else {
+        makeChatShowModel(data);
+      }
 
       // "산재 가능"이 나올 경우 노무사, 금액 선택
       if (datasplit[1] == "산재 가능") {
-        makeShowSelect();
+        makeShowSelect(data[1]);
+      } else if (datasplit[1] == "산재 불가능") {
+        let judgement = ["false", data[1]];
+        makeShowSelect(judgement);
       }
     } catch (error) {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
+      console.error("error ::", error);
     }
   }
 
@@ -165,10 +168,7 @@ form.addEventListener("submit", async function (event) {
       makeChatShowModel(answer);
       flag = false;
     } catch (error) {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
+      console.error("error ::", error);
     }
   }
 });
@@ -223,87 +223,122 @@ function removeChatShowWait() {
 }
 
 // ShowSelect 생성
-function makeShowSelect() {
-  const Selectchat = document.createElement("div");
-  Selectchat.classList.add("ShowSelect");
-  SelectchatAdd = document.createElement("div");
-  SelectchatAdd.classList.add("SelectchatContent");
-  SelectchatAdd.textContent = "추가적인 정보 도움";
-  selectPrice = document.createElement("button");
-  selectPrice.classList.add("selectPrice");
-  selectPrice.textContent = "금액 계산";
-  selectNomusa = document.createElement("button");
-  selectNomusa.classList.add("selectNomusa");
-  selectNomusa.textContent = "노무사 추천";
+function makeShowSelect(accnum) {
+  console.log(accnum.length);
+  if (!(accnum.length == 2)) {
+    const Selectchat = document.createElement("div");
+    Selectchat.classList.add("ShowSelect");
+    SelectchatAdd = document.createElement("div");
+    SelectchatAdd.classList.add("SelectchatContent");
+    SelectchatAdd.textContent = "추가적인 정보 도움";
+    selectPrice = document.createElement("button");
+    selectPrice.classList.add("selectPrice");
+    selectPrice.textContent = "금액 계산";
+    selectNomusa = document.createElement("button");
+    selectNomusa.classList.add("selectNomusa");
+    selectNomusa.textContent = "노무사 추천";
+    selectCaselaw = document.createElement("button");
+    selectCaselaw.classList.add("selectCaselaw");
+    selectCaselaw.textContent = "유사한 판례";
 
-  Selectchat.appendChild(SelectchatAdd);
-  Selectchat.appendChild(selectPrice);
-  Selectchat.appendChild(selectNomusa);
+    Selectchat.appendChild(SelectchatAdd);
+    Selectchat.appendChild(selectPrice);
+    Selectchat.appendChild(selectNomusa);
+    Selectchat.appendChild(selectCaselaw);
 
-  chat.appendChild(Selectchat);
-  chat.scrollTop = chat.scrollHeight;
+    chat.appendChild(Selectchat);
+    chat.scrollTop = chat.scrollHeight;
 
-  // 노무사 추천 버튼 눌렀을 때
-  const NomusaBtn = document.querySelector(".selectNomusa");
-  NomusaBtn.addEventListener("click", async function () {
-    try {
-      const response = await fetch("/AI/nomusa", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({}),
+    // 노무사 추천 버튼 눌렀을 때
+    const NomusaBtn = document.querySelector(".selectNomusa");
+    NomusaBtn.addEventListener("click", async function () {
+      try {
+        const response = await fetch("/AI/nomusa", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        // 데이터 나타내기
+        NomusaShow(data);
+        NomusaClick();
+
+        chat.scrollTop = chat.scrollHeight;
+      } catch (error) {
+        console.error("error ::", error);
+      }
+    });
+
+    // 금액 계산 버튼을 눌렀을 때
+    const calAmount = document.querySelector(".selectPrice");
+    calAmount.addEventListener("click", async function () {
+      try {
+        // 입력 받기
+        if (selectResult[0] == "요양") {
+          answer =
+            "실제 치료에 소요된 비용을 보상하는 것이기 때문에 직접적인 계산이 필요하지 않습니다.";
+          makeShowAmount(answer);
+        } else if (selectResult[0] == "휴업") {
+          answer = "평균임금을 입력해주세요. (숫자만 입력, 예: 2000000)";
+          makeShowAmount(answer);
+        } else if (selectResult[0] == "장해") {
+          answer =
+            "평균임금 및 장해등급을 입력해주세요. (숫자만 입력, 예: 2000000, 3)";
+          makeShowAmount(answer);
+        } else if (selectResult[0] == "유족") {
+          answer =
+            "평균임금 및 유족보상연금수급권자 수를 입력해주세요. (숫자만 입력, 예: 2000000, 2)";
+          makeShowAmount(answer);
+        }
+        amountClick();
+        flag = true;
+      } catch (error) {
+        console.error("error ::", error);
+      }
+
+      // 유사한 판례 검색 눌렀을 때
+      const searchlaw = document.querySelector(".selectCaselaw");
+      searchlaw.addEventListener("click", async function () {
+        try {
+          window.open(`/CaseLaw/data?accnum=${accnum}`);
+        } catch (error) {
+          console.error("error :: ", error);
+        }
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+    });
+  } else if (accnum.length == 2) {
+    const Selectchat = document.createElement("div");
+    Selectchat.classList.add("ShowSelect");
+    SelectchatAdd = document.createElement("div");
+    SelectchatAdd.classList.add("SelectchatContent");
+    SelectchatAdd.textContent = "추가적인 정보 도움";
+    selectCaselaw = document.createElement("button");
+    selectCaselaw.classList.add("selectCaselaw");
+    selectCaselaw.textContent = "유사한 판례";
+
+    Selectchat.appendChild(SelectchatAdd);
+    Selectchat.appendChild(selectCaselaw);
+
+    chat.appendChild(Selectchat);
+    chat.scrollTop = chat.scrollHeight;
+
+    // 유사한 판례 검색 눌렀을 때
+    const searchlaw = document.querySelector(".selectCaselaw");
+    searchlaw.addEventListener("click", async function () {
+      try {
+        window.open(`/CaseLaw/data?accnum=${accnum[1]}`);
+      } catch (error) {
+        console.error("error :: ", error);
       }
-
-      const data = await response.json();
-      console.log(data);
-
-      // 데이터 나타내기
-      NomusaShow(data);
-      NomusaClick();
-
-      chat.scrollTop = chat.scrollHeight;
-    } catch (error) {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
-    }
-  });
-
-  // 금액 계산 버튼을 눌렀을 때
-  const calAmount = document.querySelector(".selectPrice");
-  calAmount.addEventListener("click", async function () {
-    try {
-      // 입력 받기
-      if (selectResult[0] == "요양") {
-        answer =
-          "실제 치료에 소요된 비용을 보상하는 것이기 때문에 직접적인 계산이 필요하지 않습니다.";
-        makeShowAmount(answer);
-      } else if (selectResult[0] == "휴업") {
-        answer = "평균임금을 입력해주세요. (숫자만 입력, 예: 2000000)";
-        makeShowAmount(answer);
-      } else if (selectResult[0] == "장해") {
-        answer =
-          "평균임금 및 장해등급을 입력해주세요. (숫자만 입력, 예: 2000000, 3)";
-        makeShowAmount(answer);
-      } else if (selectResult[0] == "유족") {
-        answer =
-          "평균임금 및 유족보상연금수급권자 수를 입력해주세요. (숫자만 입력, 예: 2000000, 2)";
-        makeShowAmount(answer);
-      }
-      amountClick();
-      flag = true;
-    } catch (error) {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
-    }
-  });
+    });
+  }
 }
 
 // 엔터키 입력시 전송
