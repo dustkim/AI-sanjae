@@ -334,15 +334,14 @@ header > div {
   /* border: 1px solid rgba(255, 235, 51); */
   background-color: white;
   border: 0;
-  background-image: url("../image/arrow-up-outline.jpg");
+  background-image: url("../image/arrow-up-outline.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .textBtn:hover {
   cursor: pointer;
-  background-color: rgb(184, 213, 246);
-  border: 1px solid rgb(184, 213, 246);
+  background-color: rgb(99, 166, 242);
 }
 .footer {
   height: 50px;

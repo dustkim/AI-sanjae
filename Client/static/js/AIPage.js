@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const option = NaN;
       setTimeout(() => {
         appendChatShow(option, question);
-      }, 1000);
+      }, 200);
     }
 
     // 새로 추가되면 맨 밑으로 스크롤 이동
@@ -100,11 +100,13 @@ form.addEventListener("submit", async function (event) {
     document.getElementById("text").value = "";
     // 스크롤 내리기
     chat.scrollTop = chat.scrollHeight;
+  } else {
+    return;
   }
 
   makeChatShowWait();
 
-  if (text.trim() && flag == false) {
+  if (text.trim() != "" && flag == false) {
     try {
       const requestBody = { text: text, select: selectResult[0] };
       const response = await fetch("/AI", {
@@ -143,7 +145,7 @@ form.addEventListener("submit", async function (event) {
     }
   }
 
-  if (text && flag == true) {
+  if (text.trim() && flag == true) {
     try {
       console.log(text);
       const request = { text: text, select: selectResult[0] };
@@ -167,6 +169,7 @@ form.addEventListener("submit", async function (event) {
       // ChatShowModel 생성
       makeChatShowModel(answer);
       flag = false;
+      inputStatusOff();
     } catch (error) {
       console.error("error ::", error);
     }
@@ -224,7 +227,7 @@ function removeChatShowWait() {
 
 // ShowSelect 생성
 function makeShowSelect(accnum) {
-  console.log(accnum.length);
+  inputStatusOff();
   if (!(accnum.length == 2)) {
     const Selectchat = document.createElement("div");
     Selectchat.classList.add("ShowSelect");
@@ -280,6 +283,7 @@ function makeShowSelect(accnum) {
     const calAmount = document.querySelector(".selectPrice");
     calAmount.addEventListener("click", async function () {
       try {
+        inputStatusOn();
         // 입력 받기
         if (selectResult[0] == "요양") {
           answer =
@@ -302,16 +306,15 @@ function makeShowSelect(accnum) {
       } catch (error) {
         console.error("error ::", error);
       }
-
-      // 유사한 판례 검색 눌렀을 때
-      const searchlaw = document.querySelector(".selectCaselaw");
-      searchlaw.addEventListener("click", async function () {
-        try {
-          window.open(`/CaseLaw/data?accnum=${accnum}`);
-        } catch (error) {
-          console.error("error :: ", error);
-        }
-      });
+    });
+    // 유사한 판례 검색 눌렀을 때
+    const searchlaw = document.querySelector(".selectCaselaw");
+    searchlaw.addEventListener("click", async function () {
+      try {
+        window.open(`/CaseLaw/data?accnum=${accnum}`);
+      } catch (error) {
+        console.error("error :: ", error);
+      }
     });
   } else if (accnum.length == 2) {
     const Selectchat = document.createElement("div");
@@ -404,4 +407,16 @@ function amountClick() {
     button.classList.add("disabled");
   }
   chat.scrollTop = chat.scrollHeight;
+}
+
+// 금액 계산/노무사 추천/유사판례 조회 버튼 생성 시 input, button 비활성화
+function inputStatusOff() {
+  document.getElementById("text").disabled = true;
+  document.getElementById("textBtn").disabled = true;
+}
+
+// 금액 계산 버튼 클리 시 input, button 활성화
+function inputStatusOn() {
+  document.getElementById("text").disabled = false;
+  document.getElementById("textBtn").disabled = false;
 }
