@@ -133,7 +133,7 @@ form.addEventListener("submit", async function (event) {
         makeChatShowModel(data);
       }
 
-      // "산재 가능"이 나올 경우 노무사, 금액 선택
+      // "산재 가능"이 나올 경우 노무사, 금액 선택, 유사한 판례
       if (datasplit[1] == "산재 가능") {
         makeShowSelect(data[1]);
       } else if (datasplit[1] == "산재 불가능") {
@@ -322,16 +322,46 @@ function makeShowSelect(accnum) {
     SelectchatAdd = document.createElement("div");
     SelectchatAdd.classList.add("SelectchatContent");
     SelectchatAdd.textContent = "추가적인 정보 도움";
+    selectNomusa = document.createElement("button");
+    selectNomusa.classList.add("selectNomusa");
+    selectNomusa.textContent = "노무사 추천";
     selectCaselaw = document.createElement("button");
     selectCaselaw.classList.add("selectCaselaw");
     selectCaselaw.textContent = "유사한 판례";
 
     Selectchat.appendChild(SelectchatAdd);
+    Selectchat.appendChild(selectNomusa);
     Selectchat.appendChild(selectCaselaw);
 
     chat.appendChild(Selectchat);
     chat.scrollTop = chat.scrollHeight;
 
+    // 노무사 추천 버튼 눌렀을 때
+    const NomusaBtn = document.querySelector(".selectNomusa");
+    NomusaBtn.addEventListener("click", async function () {
+      try {
+        const response = await fetch("/AI/nomusa", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}),
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        // 데이터 나타내기
+        NomusaShow(data);
+        NomusaClick();
+
+        chat.scrollTop = chat.scrollHeight;
+      } catch (error) {
+        console.error("error ::", error);
+      }
+    });
     // 유사한 판례 검색 눌렀을 때
     const searchlaw = document.querySelector(".selectCaselaw");
     searchlaw.addEventListener("click", async function () {

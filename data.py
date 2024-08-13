@@ -68,16 +68,6 @@ def findanswer(text, select):
         print("JAVA_HOME" in os.environ)
     Cleantext = preprocess(text)
     result = modelstart(Cleantext, select)
-    print(len(result))
-    print(result[0])
-    print()
-    print(result[1])
-    print()
-    print(result[2])
-    print()
-    print(result[3])
-    print()
-    print(result[4])
 
     link = collectionl.find_one({"index": int(result[0]["kinda"][0])})
     if result[0]["similarity"] > 0.5:

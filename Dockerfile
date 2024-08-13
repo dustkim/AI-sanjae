@@ -2,8 +2,12 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
+ENV PORT=8000
+ENV MONGODB_KEY=a77643675:47sRiC4WdWmy4M5a
+ENV MODEL_NAME=distiluse-base-multilingual-cased-v1
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
