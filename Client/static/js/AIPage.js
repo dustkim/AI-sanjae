@@ -300,6 +300,8 @@ function makeShowSelect(accnum) {
           answer =
             "평균임금 및 유족보상연금수급권자 수를 입력해주세요. (숫자만 입력, 예: 2000000, 2)";
           makeShowAmount(answer);
+        } else {
+          answer = "서비스 준비중입니다.";
         }
         amountClick();
         flag = true;
