@@ -33,21 +33,21 @@ AI를 통해 산재 가능성을 판단하고 사용자의 상황과 유사한 �
  
 ### 메인
 <details>
-<summary>보기</summary>
-<img src="https://github.com/user-attachments/assets/c1c4b74c-f979-48c1-b372-b71deb356e30">
-</details>
+ <summary>보기</summary>
+  <img src="https://github.com/user-attachments/assets/1a391211-3642-478c-9b4d-0970de1c8a83" width="1000">
+ </details>
 
 ### 판례문 검색
 <details>
-<summary>보기</summary>
-<img src="https://github.com/user-attachments/assets/f791b0ca-41ad-4123-a920-792355a2bf07">
-</details>
+ <summary>보기</summary>
+  <img src="https://github.com/user-attachments/assets/f1a40e27-eb72-4e5d-bfcb-9271c3fd09ef" width="1000">
+ </details>
 
 ### AI 산재 판별
 <details>
-<summary>보기</summary>
-<img src="https://github.com/user-attachments/assets/56f0bc96-67ac-40bd-a524-6d86af94c2da">
-</details>
+ <summary>보기</summary>
+  <img src="https://github.com/user-attachments/assets/32589b9a-71c5-4f29-ad27-0dcec1ae40ca">
+ </details>
 
 --------------------
 ### ⚙️ Skills & Tools
