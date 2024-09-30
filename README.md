@@ -71,8 +71,8 @@ AI를 통해 산재 가능성을 판단하고 사용자의 상황과 유사한 �
 
 ### AI를 활용한 산재 가능성 판단 웹
 
-<img src="https://github.com/user-attachments/assets/e9a1db89-57df-4cd0-931e-2187a7500ce7">
-<img src="https://github.com/user-attachments/assets/b126b716-c0ae-4d5a-b92a-4d9928b24802">
+<img src="https://github.com/user-attachments/assets/f1378cc1-f9ba-408a-bfb4-03eb9ee16231" width="1000">
+<img src="https://github.com/user-attachments/assets/8e1c6c93-9ac5-4140-8be5-f0214c036411" width="1000">
 
 최근 뿐만 아니라 예전부터 산업재해와 산재보험에 관련된 많은 뉴스와 기사가 있었습니다.노동자들에게 필요한 산재보험에 관한 문제는 산재로 인한 상처를 더욱 증가시킬 수 있다고 생각했습니다.
 
@@ -106,7 +106,7 @@ sanjae.gg는 누구나 사용하기 쉽운 인터페이스를 제공하며, AI�
 <br>
 
 ## 📌 IA(Information Architecture)
-<img src="https://github.com/user-attachments/assets/dd05be85-a194-4b68-b086-3447baf93171">
+<img src="https://github.com/user-attachments/assets/2fa5c7a0-f960-474b-9951-3ee152ab7de9" width="1000">
 
 <br>
 <br>
@@ -121,8 +121,8 @@ sanjae.gg는 누구나 사용하기 쉽운 인터페이스를 제공하며, AI�
 <br>
 
 ## 📌 활용방안 및 기대효과
-<img src="https://github.com/user-attachments/assets/cec44276-95ea-4f9c-8f01-cf2dcb475884">
-<img src="https://github.com/user-attachments/assets/2e1bc7af-ef0e-41a6-848c-d7939853612c">
+![활용방안 및 기대효과1](https://github.com/user-attachments/assets/c74041fe-3608-416d-b4f2-6816c727957f)
+![활용방안 및 기대효과2](https://github.com/user-attachments/assets/a51e99ad-d03d-4c6b-85fc-56e44b6c8a13)
 
 <br>
 <br>
